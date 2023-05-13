@@ -120,34 +120,24 @@ if (temp >= 255.0){
 } */
 
 //movement 
-  float valx = 300*sin(counter/500000000.0)+300;
-  float valy = 300*cos(counter/500000000.0)+300;
+  float valx = 10*sin(counter/10000000.0);
+  float valy = 10*cos(counter/10000000.0);
 
 //perlin noise between 0-1
   float col = perlin2d(x+(valx), y+(valy), 0.06, 3)*0.5; 
   col += perlin2d(x+(valx*0.5), y+(valy*0.5), 0.06, 3)*0.5;
-col = 3*(col-0.5)+0.3;
-if (col <=0){
-col = 0;
-}
-float red = (42 + (col*(255-42)));
-float green = (100 + (col*(255-100)));
-float blue = (250 + (col*(255-250))); 
+float red = 42 + (col*(255-42));
+float green = 174 + (col*(255-174));
+float blue = 250 + (col*(255-250)); 
   //float temp = 3*(col-128.0)+128.0;
  float temp = 3*(col-128.0)+80.0;  
-if (red >= 235.0){
-    red = 255.0;
-    green = 255.0; 
-    blue = 255.0;
- } 
-if (green >= 235.0){
-      red = 255.0;
-    green = 255.0; 
-    blue = 255.0;
- }
-if (blue >= 255.0){
-    blue = 255.0;
- }
+if (temp >= 255.0){
+    col = 255.0;
+  }
+  else{
+  col = temp;
+} 
+
  //5*(col-128)+128;
         //canvas->SetPixel(x,y,col,col, 255);
   canvas->SetPixel(x,y,red,green, blue);

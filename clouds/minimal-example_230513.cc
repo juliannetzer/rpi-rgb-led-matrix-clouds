@@ -1,4 +1,4 @@
-// -*- mode: c++; c-basic-offset: 2; indent-tabs-mode: nil; -*-
+ // -*- mode: c++; c-basic-offset: 2; indent-tabs-mode: nil; -*-
 // Small example how to use the library.
 // For more examples, look at demo-main.cc
 //
@@ -106,7 +106,7 @@ static void DrawOnCanvas(Canvas *canvas) {
             if (interrupt_received)
       return;
   counter++;
-/* float valx = 10*sin(counter/100000000.0);
+  float valx = 10*sin(counter/100000000.0);
   float valy = 10*cos(counter/100000000.0);
   float col = perlin2d(x+(valx), y+(valy), 0.06, 3)*128; 
   col += perlin2d(x+(valx*0.5), y+(valy*0.5), 0.06, 3)*128; 
@@ -117,40 +117,10 @@ if (temp >= 255.0){
   }
   else{
   col = temp;
-} */
-
-//movement 
-  float valx = 300*sin(counter/500000000.0)+300;
-  float valy = 300*cos(counter/500000000.0)+300;
-
-//perlin noise between 0-1
-  float col = perlin2d(x+(valx), y+(valy), 0.06, 3)*0.5; 
-  col += perlin2d(x+(valx*0.5), y+(valy*0.5), 0.06, 3)*0.5;
-col = 3*(col-0.5)+0.3;
-if (col <=0){
-col = 0;
-}
-float red = (42 + (col*(255-42)));
-float green = (100 + (col*(255-100)));
-float blue = (250 + (col*(255-250))); 
-  //float temp = 3*(col-128.0)+128.0;
- float temp = 3*(col-128.0)+80.0;  
-if (red >= 235.0){
-    red = 255.0;
-    green = 255.0; 
-    blue = 255.0;
- } 
-if (green >= 235.0){
-      red = 255.0;
-    green = 255.0; 
-    blue = 255.0;
- }
-if (blue >= 255.0){
-    blue = 255.0;
- }
+} 
  //5*(col-128)+128;
-        //canvas->SetPixel(x,y,col,col, 255);
-  canvas->SetPixel(x,y,red,green, blue);
+        canvas->SetPixel(x,y,col,col, 255
+);
         //usleep(1 * 1000);  // wait a little to slow down things.
   }
 }
